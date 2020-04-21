@@ -4,6 +4,7 @@ import CardList from "../../components/CardList/CardList";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import Scroll from "../../components/Scroll/Scroll";
 import ErrorBoundary from "../ErrorBoundry/ErrorBoundry";
+import Header from '../../components/Header/Header'
 import "./App.css";
 import { setSearchField, requestRobots } from "../../actions";
 
@@ -24,30 +25,13 @@ const mapDispatchToProps = dispatch => {
   };
 };
 class App extends React.Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     // searchField: "",
-  //     robots: []
-  //   };
-  // }
 
   componentDidMount() {
-    // fetch("https://jsonplaceholder.typicode.com/users")
-    //   .then(resp => resp.json())
-    //   .then(data => {
-    //     this.setState({ robots: data });
-    //   })
-    //   .catch(err => console.log(err));
     this.props.onRequestRobots();
   }
 
-  // onInputChange = e => {
-  //   this.setState({ searchField: e.target.value });
-  // };
 
   render() {
-    // const { robots /*searchField*/ } = this.state;
     const { searchField, onSearchChange, robots, isPending } = this.props;
     const filteredRobots = robots.filter(robot =>
       robot.name.toLowerCase().includes(searchField.toLowerCase())
@@ -57,7 +41,7 @@ class App extends React.Component {
     } else {
       return (
         <div className="tc">
-          <h1>Robofriends</h1>
+          <Header />
           <SearchBox onInputChange={onSearchChange} />
           <Scroll>
             <ErrorBoundary>

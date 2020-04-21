@@ -2,7 +2,6 @@ import React from "react";
 import Card from "../Card/Card";
 
 const CardList = ({ filteredRobots }) => {
-  
   return (
     <div className="mt4">
       {filteredRobots.map(robot => {
